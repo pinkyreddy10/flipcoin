@@ -1,8 +1,9 @@
 #! /bin/bash
 heads=0
 tails=0
-for (( i=1; i<=30; i++ ))
+while [ $heads -ne 21 -a $tails -ne 21 ]
 do
+
 	result=$(( RANDOM%2 ))
 	echo $result
 	if [ $result -eq 0 ]
@@ -14,3 +15,15 @@ do
 done
 echo "heads " $heads
 echo "tails " $tails
+headwins=$(( heads-tails ))
+tailwins=$(( tails-heads ))
+
+if [ $heads -gt $tails ]
+then
+	echo "heads wins " $headwins
+elif [ $heads -lt $tails ]
+then
+	echo "tails wins " $tailwins
+else
+	echo "tie "
+fi
